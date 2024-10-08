@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="src\Models\" />
     <Folder Include="tests\" />
     <Folder Include="src\Helpers\" />
     <Folder Include="src\UserInteraction\" />

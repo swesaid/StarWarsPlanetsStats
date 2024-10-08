@@ -1,4 +1,6 @@
-﻿namespace StarWarsPlanetsStats.App;
+﻿using System.Text.Json;
+
+namespace StarWarsPlanetsStats.App;
 
 public class StarWarsPlanetsStatsApp
 {
@@ -13,6 +15,7 @@ public class StarWarsPlanetsStatsApp
         string baseAddress = "https://swapi.dev/api/";
         string requestUri = "planets";
         var json = _apiDataReader.Read(baseAddress, requestUri).Result;
+        var root = JsonSerializer.Deserialize<Root>(json);
 
         Console.WriteLine("Press any key to close.");
         Console.ReadKey();
