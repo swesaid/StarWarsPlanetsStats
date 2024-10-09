@@ -1,6 +1,5 @@
 ﻿namespace StarWarsPlanetsStats.Models;
 
-
 public record Root(
      [property: JsonPropertyName("count")] int count,
      [property: JsonPropertyName("next")] string? next,
@@ -13,6 +12,7 @@ public record Result(
    [property: JsonPropertyName("rotation_period")] string rotation_period,
    [property: JsonPropertyName("orbital_period")] string orbital_period,
    [property: JsonPropertyName("climate")] string climate,
+   [property: JsonPropertyName("diameter")] string diameter,
    [property: JsonPropertyName("gravity")] string gravity,
    [property: JsonPropertyName("terrain")] string terrain,
    [property: JsonPropertyName("surface_water")] string? surface_water,

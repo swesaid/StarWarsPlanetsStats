@@ -3,7 +3,8 @@
     public static void Main(string[] args)
     {
         IApiDataReader apiDataReader = new ApiDataReader();
-        StarWarsPlanetsStatsApp App = new StarWarsPlanetsStatsApp(apiDataReader);
+        ITypeConverter typeConverter = new TypeConverter();
+        StarWarsPlanetsStatsApp App = new StarWarsPlanetsStatsApp(apiDataReader, typeConverter);
         
         App.Run();
     }
