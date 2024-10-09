@@ -9,9 +9,9 @@ public class TypeConverter : ITypeConverter
         foreach (var planet in root.results)
         {
             int diameter = int.Parse(planet.diameter);
-            int? surfaceWater = Parser.FromStringToNullableInt(planet?.surface_water);
-            decimal? population = Parser.FromStringToNullableDecimal(planet?.population);
-            var planetInfo = new PlanetInfo(planet.name, diameter, surfaceWater, population);
+            int? surfaceWater = Parser.FromStringToNullableInt(planet?.surface_water!);
+            decimal? population = Parser.FromStringToNullableDecimal(planet?.population!);
+            var planetInfo = new PlanetInfo(planet!.name, diameter, surfaceWater, population);
 
             result.Add(planetInfo);
         }

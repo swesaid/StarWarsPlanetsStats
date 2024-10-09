@@ -4,11 +4,13 @@ public class StarWarsPlanetsStatsApp
 {
     private readonly IApiDataReader _apiDataReader;
     private readonly ITypeConverter _typeConverter;
+    private readonly IUserInteraction _userInteraction;
 
-    public StarWarsPlanetsStatsApp(IApiDataReader apiDataReader, ITypeConverter typeConverter)
+    public StarWarsPlanetsStatsApp(IApiDataReader apiDataReader, ITypeConverter typeConverter, IUserInteraction userInteraction)
     {
         _apiDataReader = apiDataReader;
         _typeConverter = typeConverter;
+        _userInteraction = userInteraction;
     }
     public void Run()
     {
@@ -21,8 +23,33 @@ public class StarWarsPlanetsStatsApp
         //Stores the data about planets as List with appropriate types.
         var planets = _typeConverter.Convert(ref apiData!);
 
-        Console.WriteLine("Press any key to close.");
+        _userInteraction.PrintPlanetsInfo(planets);
+
+        _userInteraction.PrintMessage("\nPress any key to close.");
         Console.ReadKey();
     }
 }
+
+public class ConsoleUserInteraction : IUserInteraction
+{
+    public void PrintMessage(string message)
+    {
+        Console.WriteLine(message);
+    }
+
+    public void PrintPlanetsInfo(List<PlanetInfo> planets)
+    {
+        string header = $"{"Name",-25} | {"Diameter",-15} | {"SurfaceWater",-20} | {"Population",-15} |";
+        string separator = new string('-', header.Length);
+        
+        PrintMessage(header);
+        PrintMessage(separator);
+
+        foreach (PlanetInfo planet in planets) 
+        { 
+            PrintMessage(planet.ToString());
+        }
+    }
+}
+
 

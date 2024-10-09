@@ -14,5 +14,8 @@ public record PlanetInfo
         SurfaceWater = surfaceWater;
         Population = population;
     }
+
+    public override string ToString() => $"{Name,-25} | {Diameter,-15} | {SurfaceWater,-20} | {Population,-15} |";
+
 }
 

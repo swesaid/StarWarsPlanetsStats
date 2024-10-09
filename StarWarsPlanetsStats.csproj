@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="tests\" />
-    <Folder Include="src\UserInteraction\" />
   </ItemGroup>
 
 </Project>
