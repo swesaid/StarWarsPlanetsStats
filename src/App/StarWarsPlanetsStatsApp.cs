@@ -23,7 +23,8 @@ public class StarWarsPlanetsStatsApp
         //Stores the data about planets as List with appropriate types.
         var planets = _typeConverter.Convert(ref apiData!);
 
-        _userInteraction.PrintPlanetsInfo(planets);
+        _userInteraction.PrintPlanetsInfoTable(planets);
+        _userInteraction.PrintAvailableProperties();
 
         _userInteraction.PrintMessage("\nPress any key to close.");
         Console.ReadKey();
@@ -37,7 +38,7 @@ public class ConsoleUserInteraction : IUserInteraction
         Console.WriteLine(message);
     }
 
-    public void PrintPlanetsInfo(List<PlanetInfo> planets)
+    public void PrintPlanetsInfoTable(List<PlanetInfo> planets)
     {
         string header = $"{"Name",-25} | {"Diameter",-15} | {"SurfaceWater",-20} | {"Population",-15} |";
         string separator = new string('-', header.Length);
@@ -49,6 +50,17 @@ public class ConsoleUserInteraction : IUserInteraction
         { 
             PrintMessage(planet.ToString());
         }
+    }
+
+    public void PrintAvailableProperties()
+    {
+        PrintMessage("\nThe statistics of which property would you like to see ?\n");
+        
+        Type type = typeof(PlanetInfo);
+        var properties = type.GetProperties().Where(property => property.Name != "EqualityContract");
+
+        foreach (var property in properties) 
+            PrintMessage(property.Name);
     }
 }
 
