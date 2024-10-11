@@ -1,8 +1,11 @@
-﻿namespace StarWarsPlanetsStats.UserInteraction;
+﻿
+namespace StarWarsPlanetsStats.UserInteraction;
 
 public interface IUserInteraction
 {
-    public void PrintMessage(string message);
-    public void PrintPlanetsInfoTable(List<PlanetInfo> planets);
-    public void PrintAvailableProperties();
+    void PrintMessage(string message);
+    void PrintPlanetsInfoTable(List<PlanetInfo> planets);
+    void PrintAvailableProperties();
+    string? ReadFromUser();
+    void ShowStatistics(List<PlanetInfo> planets, string chosenProperty, Func<PlanetInfo, long?> func);
 }

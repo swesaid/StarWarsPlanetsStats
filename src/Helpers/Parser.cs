@@ -9,9 +9,9 @@ public static class Parser
         return result;
     }
 
-    public static decimal? FromStringToNullableDecimal(string value)
+    public static long? FromStringToNullableLong(string value)
     {
-        if (!decimal.TryParse(value, out decimal result))
+        if (!long.TryParse(value, out long result))
             return null;
         return result;
     }

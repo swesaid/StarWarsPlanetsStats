@@ -10,7 +10,7 @@ public class TypeConverter : ITypeConverter
         {
             int diameter = int.Parse(planet.diameter);
             int? surfaceWater = Parser.FromStringToNullableInt(planet?.surface_water!);
-            decimal? population = Parser.FromStringToNullableDecimal(planet?.population!);
+            long? population = Parser.FromStringToNullableLong(planet?.population!);
             var planetInfo = new PlanetInfo(planet!.name, diameter, surfaceWater, population);
 
             result.Add(planetInfo);

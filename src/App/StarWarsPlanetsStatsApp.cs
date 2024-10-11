@@ -26,6 +26,22 @@ public class StarWarsPlanetsStatsApp
         _userInteraction.PrintPlanetsInfoTable(planets);
         _userInteraction.PrintAvailableProperties();
 
+        string? chosenProperty = _userInteraction.ReadFromUser();
+
+        var statisticsSelectors = new Dictionary<string, Func<PlanetInfo, long?>>
+        {
+            ["population"] = planet => planet.population,
+            ["diameter"] = planet => planet.diameter,
+            ["surfacewater"] = planet => planet.surfacewater,
+        };
+
+        if(chosenProperty is null || !statisticsSelectors.ContainsKey(chosenProperty))
+            Console.WriteLine("Invalid choice.");
+        else
+        {
+            _userInteraction.ShowStatistics(planets, chosenProperty, statisticsSelectors[chosenProperty]);
+        }
+
         _userInteraction.PrintMessage("\nPress any key to close.");
         Console.ReadKey();
     }
@@ -33,6 +49,11 @@ public class StarWarsPlanetsStatsApp
 
 public class ConsoleUserInteraction : IUserInteraction
 {
+
+    public string? ReadFromUser()
+    {
+        return Console.ReadLine();
+    }
     public void PrintMessage(string message)
     {
         Console.WriteLine(message);
@@ -57,11 +78,24 @@ public class ConsoleUserInteraction : IUserInteraction
         PrintMessage("\nThe statistics of which property would you like to see ?\n");
         
         Type type = typeof(PlanetInfo);
-        var properties = type.GetProperties().Where(property => property.Name != "EqualityContract");
+        var properties = type.GetProperties().Where(property => property.Name != "name");
 
         foreach (var property in properties) 
             PrintMessage(property.Name);
+        PrintMessage("");
     }
+
+    public void ShowStatistics(List<PlanetInfo> planets, string chosenProperty, Func<PlanetInfo, long?> selector)
+    {
+        var min = planets.MinBy(planet => selector(planet));
+        var max = planets.MaxBy(planet => selector(planet));
+
+        PrintMessage($"Max {chosenProperty} is {selector(max)} (planet: {max.name})");
+        PrintMessage($"Min {chosenProperty} is {selector(min)} (planet: {min.name})");
+    }
+
+
 }
+
 
 

@@ -3,11 +3,11 @@
 public record PlanetInfo
 { 
     public string name { get; init; }
-    public int diameter { get; init; } 
+    public int ?diameter { get; init; } 
     public int? surfacewater { get; init; }
-    public decimal? population { get; init; }
+    public long? population { get; init; }
 
-    public PlanetInfo(string name, int diameter, int? surfaceWater, decimal? population)
+    public PlanetInfo(string name, int diameter, int? surfaceWater, long? population)
     {
         this.name = name;
         this.diameter = diameter;
