@@ -2,29 +2,20 @@
 
 public class StarWarsPlanetsStatsApp
 {
-    private readonly IApiDataReader _apiDataReader;
-    private readonly ITypeConverter _typeConverter;
     private readonly IUserInteraction _userInteraction;
     private readonly IPlanetStatisticsAnalyzer _planetStatisticsAnalyzer;
+    private readonly IPlanetsReader _planetsReader;
 
-    public StarWarsPlanetsStatsApp(IApiDataReader apiDataReader, ITypeConverter typeConverter, IUserInteraction userInteraction, IPlanetStatisticsAnalyzer planetStatisticsAnalyzer)
+    public StarWarsPlanetsStatsApp(IUserInteraction userInteraction, IPlanetStatisticsAnalyzer planetStatisticsAnalyzer, IPlanetsReader planetsReader)
     {
-        _apiDataReader = apiDataReader;
-        _typeConverter = typeConverter;
         _userInteraction = userInteraction;
         _planetStatisticsAnalyzer = planetStatisticsAnalyzer;
+        _planetsReader = planetsReader;
     }
 
-    public void Run()
+    public async Task Run()
     {
-        string baseAddress = "https://swapi.dev/api/";
-        string requestUri = "planets";
-        var jsonString = _apiDataReader.Read(baseAddress, requestUri).Result;
-        
-        var apiData = JsonSerializer.Deserialize<Root>(jsonString);
-
-        //Stores the data about planets as List with appropriate types.
-        var planets = _typeConverter.Convert(ref apiData!);
+        var planets = await _planetsReader.Read();
 
         _userInteraction.PrintPlanetsInfoTable(planets);
         _planetStatisticsAnalyzer.Analyze(planets);
@@ -33,6 +24,7 @@ public class StarWarsPlanetsStatsApp
         Console.ReadKey();
     }
 }
+
 
 public class ConsoleUserInteraction : IUserInteraction
 {

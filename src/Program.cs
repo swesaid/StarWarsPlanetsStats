@@ -1,16 +1,27 @@
 ﻿public class Program
 { 
-    public static void Main(string[] args)
+    public async static Task Main(string[] args)
     {
-        IUserInteraction userInteraction = new ConsoleUserInteraction();
-        IApiDataReader apiDataReader = new ApiDataReader();
-        ITypeConverter typeConverter = new TypeConverter();
-        IPlanetStatisticsUI planetStatisticsUI = new PlanetStatisticsConsoleUI(userInteraction);
-        IPlanetStatisticsAnalyzer planetStatisticsAnalyzer = new PlanetStatisticsAnalyzer(userInteraction, planetStatisticsUI);
+        try
+        {
+            IUserInteraction userInteraction = new ConsoleUserInteraction();
+            IApiDataReader apiDataReader = new ApiDataReader();
+            IApiDataReader secondaryApiDataReader = new MockStarWarsApiDataReader();
+            ITypeConverter typeConverter = new TypeConverter();
+            IPlanetStatisticsUI planetStatisticsUI = new PlanetStatisticsConsoleUI(userInteraction);
+            IPlanetStatisticsAnalyzer planetStatisticsAnalyzer = new PlanetStatisticsAnalyzer(userInteraction, planetStatisticsUI);
+            IPlanetsReader planetsReader = new PlanetsFromApiReader(apiDataReader, secondaryApiDataReader, userInteraction, typeConverter);
 
-        StarWarsPlanetsStatsApp App = new StarWarsPlanetsStatsApp(apiDataReader, typeConverter, userInteraction, planetStatisticsAnalyzer);
+            StarWarsPlanetsStatsApp App =  new StarWarsPlanetsStatsApp(userInteraction, planetStatisticsAnalyzer, planetsReader);
         
-        App.Run();
+            await App.Run();
+
+        }
+        catch(Exception ex)
+        {
+            Console.WriteLine("Sorry! The application has experienced an unexpected error and will have to be closed." +
+                              "Exception message: " + ex.Message);
+        }
     }
     
 }
