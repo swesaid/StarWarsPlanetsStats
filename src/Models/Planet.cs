@@ -17,5 +17,14 @@ public record struct Planet
 
     public override string ToString() => $"{name,-25} | {diameter,-15} | {surfacewater,-20} | {population,-15} |";
 
+    public static explicit operator Planet(Result input)
+    {
+        int diameter = int.Parse(input.diameter);
+        int? surfaceWater = input.surface_water.ToIntOrNull();
+        long? population = input.population.ToLongOrNull();
+
+        return new Planet(input.name, diameter, surfaceWater, population) ;
+    }
+
 }
 
