@@ -9,7 +9,6 @@ public class PlanetStatisticsConsoleUI : IPlanetStatisticsUI
         _userInteraction = userInteraction;
     }
 
-
     public string? ChooseStatistics(IEnumerable<string> statisticsProperties)
     {
         _userInteraction.PrintMessage("\nThe statistics of which property would you like to see ?\n");
