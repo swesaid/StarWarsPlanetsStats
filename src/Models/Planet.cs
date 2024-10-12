@@ -1,6 +1,6 @@
 ﻿namespace StarWarsPlanetsStats.Models;
 
-public record struct Planet
+public readonly record struct Planet
 { 
     public string Name { get; init; }
     public int ?Diameter { get; init; } 

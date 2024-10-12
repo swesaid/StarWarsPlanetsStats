@@ -4,8 +4,7 @@ public class TypeConverter : ITypeConverter
 {
     public List<Planet> Convert(Root? root)
     {
-        if(root is null)
-            throw new ArgumentNullException(nameof(root));
+        ArgumentNullException.ThrowIfNull(root);
 
         return root.results.Select(rootObj => (Planet)rootObj).ToList();
     }

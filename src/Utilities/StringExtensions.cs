@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata.Ecma335;
-
-namespace StarWarsPlanetsStats.Utilities;
+﻿namespace StarWarsPlanetsStats.Utilities;
 
 public static class StringExtensions
 {

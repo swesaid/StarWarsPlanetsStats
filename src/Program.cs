@@ -1,6 +1,6 @@
 ﻿public class Program
 { 
-    public async static Task Main(string[] args)
+    public async static Task Main()
     {
         try
         {
@@ -12,7 +12,7 @@
             IPlanetStatisticsAnalyzer planetStatisticsAnalyzer = new PlanetStatisticsAnalyzer(userInteraction, planetStatisticsUI);
             IPlanetsReader planetsReader = new PlanetsFromApiReader(apiDataReader, secondaryApiDataReader, userInteraction, typeConverter);
 
-            StarWarsPlanetsStatsApp App =  new StarWarsPlanetsStatsApp(userInteraction, planetStatisticsAnalyzer, planetsReader);
+            StarWarsPlanetsStatsApp App =  new(userInteraction, planetStatisticsAnalyzer, planetsReader);
         
             await App.Run();
 
