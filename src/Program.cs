@@ -5,7 +5,10 @@
         IUserInteraction userInteraction = new ConsoleUserInteraction();
         IApiDataReader apiDataReader = new ApiDataReader();
         ITypeConverter typeConverter = new TypeConverter();
-        StarWarsPlanetsStatsApp App = new StarWarsPlanetsStatsApp(apiDataReader, typeConverter, userInteraction);
+        IPlanetStatisticsUI planetStatisticsUI = new PlanetStatisticsConsoleUI(userInteraction);
+        IPlanetStatisticsAnalyzer planetStatisticsAnalyzer = new PlanetStatisticsAnalyzer(userInteraction, planetStatisticsUI);
+
+        StarWarsPlanetsStatsApp App = new StarWarsPlanetsStatsApp(apiDataReader, typeConverter, userInteraction, planetStatisticsAnalyzer);
         
         App.Run();
     }
