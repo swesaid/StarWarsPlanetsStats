@@ -8,9 +8,9 @@ public class PlanetStatisticsAnalyzer : IPlanetStatisticsAnalyzer
 
     private readonly Dictionary<string, Func<Planet, long?>> statisticsSelectors = new()
     {
-        ["population"] = planet => planet.population,
-        ["diameter"] = planet => planet.diameter,
-        ["surfacewater"] = planet => planet.surfacewater,
+        ["population"] = planet => planet.Population,
+        ["diameter"] = planet => planet.Diameter,
+        ["surface water"] = planet => planet.SurfaceWater,
     };
 
     public PlanetStatisticsAnalyzer(IUserInteraction userInteraction, IPlanetStatisticsUI planetStatisticsUI)

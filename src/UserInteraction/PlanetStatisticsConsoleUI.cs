@@ -23,8 +23,8 @@ public class PlanetStatisticsConsoleUI : IPlanetStatisticsUI
         var min = planets.MinBy(planet => selector(planet));
         var max = planets.MaxBy(planet => selector(planet));
 
-        _userInteraction.PrintMessage($"Max {chosenProperty} is {selector(max)} (planet: {max.name})");
-        _userInteraction.PrintMessage($"Min {chosenProperty} is {selector(min)} (planet: {min.name})");
+        _userInteraction.PrintMessage($"Max {chosenProperty} is {selector(max)} (planet: {max.Name})");
+        _userInteraction.PrintMessage($"Min {chosenProperty} is {selector(min)} (planet: {min.Name})");
     }
 
 
