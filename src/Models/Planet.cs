@@ -1,13 +1,13 @@
 ﻿namespace StarWarsPlanetsStats.Models;
 
-public record PlanetInfo
+public record struct Planet
 { 
     public string name { get; init; }
     public int ?diameter { get; init; } 
     public int? surfacewater { get; init; }
     public long? population { get; init; }
 
-    public PlanetInfo(string name, int diameter, int? surfaceWater, long? population)
+    public Planet(string name, int diameter, int? surfaceWater, long? population)
     {
         this.name = name;
         this.diameter = diameter;

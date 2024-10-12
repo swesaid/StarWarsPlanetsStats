@@ -2,16 +2,16 @@
 
 public class TypeConverter : ITypeConverter
 {
-    public List<PlanetInfo> Convert(ref Root root)
+    public List<Planet> Convert(ref Root root)
     {
-        List<PlanetInfo> result = new List<PlanetInfo>();
+        List<Planet> result = new List<Planet>();
 
         foreach (var planet in root.results)
         {
             int diameter = int.Parse(planet.diameter);
             int? surfaceWater = Parser.FromStringToNullableInt(planet?.surface_water!);
             long? population = Parser.FromStringToNullableLong(planet?.population!);
-            var planetInfo = new PlanetInfo(planet!.name, diameter, surfaceWater, population);
+            var planetInfo = new Planet(planet!.name, diameter, surfaceWater, population);
 
             result.Add(planetInfo);
         }

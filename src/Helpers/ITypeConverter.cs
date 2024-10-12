@@ -2,6 +2,6 @@
 
 public interface ITypeConverter
 {
-    List<PlanetInfo> Convert(ref Root root);
+    List<Planet> Convert(ref Root root);
 }
 

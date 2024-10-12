@@ -28,7 +28,7 @@ public class StarWarsPlanetsStatsApp
 
         string? chosenProperty = _userInteraction.ReadFromUser();
 
-        var statisticsSelectors = new Dictionary<string, Func<PlanetInfo, long?>>
+        var statisticsSelectors = new Dictionary<string, Func<Planet, long?>>
         {
             ["population"] = planet => planet.population,
             ["diameter"] = planet => planet.diameter,
@@ -59,7 +59,7 @@ public class ConsoleUserInteraction : IUserInteraction
         Console.WriteLine(message);
     }
 
-    public void PrintPlanetsInfoTable(List<PlanetInfo> planets)
+    public void PrintPlanetsInfoTable(List<Planet> planets)
     {
         string header = $"{"Name",-25} | {"Diameter",-15} | {"SurfaceWater",-20} | {"Population",-15} |";
         string separator = new string('-', header.Length);
@@ -67,7 +67,7 @@ public class ConsoleUserInteraction : IUserInteraction
         PrintMessage(header);
         PrintMessage(separator);
 
-        foreach (PlanetInfo planet in planets) 
+        foreach (Planet planet in planets) 
         { 
             PrintMessage(planet.ToString());
         }
@@ -77,7 +77,7 @@ public class ConsoleUserInteraction : IUserInteraction
     {
         PrintMessage("\nThe statistics of which property would you like to see ?\n");
         
-        Type type = typeof(PlanetInfo);
+        Type type = typeof(Planet);
         var properties = type.GetProperties().Where(property => property.Name != "name");
 
         foreach (var property in properties) 
@@ -85,7 +85,7 @@ public class ConsoleUserInteraction : IUserInteraction
         PrintMessage("");
     }
 
-    public void ShowStatistics(List<PlanetInfo> planets, string chosenProperty, Func<PlanetInfo, long?> selector)
+    public void ShowStatistics(List<Planet> planets, string chosenProperty, Func<Planet, long?> selector)
     {
         var min = planets.MinBy(planet => selector(planet));
         var max = planets.MaxBy(planet => selector(planet));
