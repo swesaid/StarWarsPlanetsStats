@@ -1,6 +1,4 @@
-﻿using StarWarsPlanetsStats.Utilities;
-
-namespace StarWarsPlanetsStats.Helpers;
+﻿namespace StarWarsPlanetsStats.Helpers;
 
 public class TypeConverter : ITypeConverter
 {
@@ -16,9 +14,10 @@ public class TypeConverter : ITypeConverter
             int diameter = int.Parse(planet.diameter);
             int? surfaceWater = planet.surface_water.ToIntOrNull();
             long? population = planet.population.ToLongOrNull();
-            var planetInfo = new Planet(planet!.name, diameter, surfaceWater, population);
+            
+            var newPlanet = new Planet(planet!.name, diameter, surfaceWater, population);
 
-            result.Add(planetInfo);
+            result.Add(newPlanet);
         }
 
         return result;
