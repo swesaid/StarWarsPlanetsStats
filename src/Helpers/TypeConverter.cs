@@ -1,4 +1,6 @@
-﻿namespace StarWarsPlanetsStats.Helpers;
+﻿using StarWarsPlanetsStats.Utilities;
+
+namespace StarWarsPlanetsStats.Helpers;
 
 public class TypeConverter : ITypeConverter
 {
@@ -7,13 +9,13 @@ public class TypeConverter : ITypeConverter
         if(root is null)
             throw new ArgumentNullException(nameof(root));
 
-        List<Planet> result = new List<Planet>();
+        var result = new List<Planet>();
 
         foreach (var planet in root.results)
         {
             int diameter = int.Parse(planet.diameter);
-            int? surfaceWater = Parser.FromStringToNullableInt(planet?.surface_water);
-            long? population = Parser.FromStringToNullableLong(planet?.population);
+            int? surfaceWater = planet.surface_water.ToIntOrNull();
+            long? population = planet.population.ToLongOrNull();
             var planetInfo = new Planet(planet!.name, diameter, surfaceWater, population);
 
             result.Add(planetInfo);
