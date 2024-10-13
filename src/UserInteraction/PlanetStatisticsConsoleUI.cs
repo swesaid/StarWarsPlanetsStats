@@ -15,7 +15,6 @@ public class PlanetStatisticsConsoleUI : IPlanetStatisticsUI
         _userInteraction.PrintMessage(string.Join(Environment.NewLine, statisticsProperties) + Environment.NewLine);
 
         return _userInteraction.ReadFromUser();
-
     }
 
     public void ShowStatistics(List<Planet> planets, string chosenProperty, Func<Planet, long?> selector)
@@ -25,6 +24,11 @@ public class PlanetStatisticsConsoleUI : IPlanetStatisticsUI
 
         _userInteraction.PrintMessage($"Max {chosenProperty} is {selector(max)} (planet: {max.Name})");
         _userInteraction.PrintMessage($"Min {chosenProperty} is {selector(min)} (planet: {min.Name})");
+    }
+
+    public void ShowPlanets(List<Planet> planets)
+    {
+        TablePrinter.Print(planets);
     }
 
 

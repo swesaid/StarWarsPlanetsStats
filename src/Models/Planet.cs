@@ -15,7 +15,6 @@ public readonly record struct Planet
         Population = population;
     }
 
-    public override string ToString() => $"{Name,-25} | {Diameter,-15} | {SurfaceWater,-20} | {Population,-15} |";
 
     public static explicit operator Planet(Result input)
     {

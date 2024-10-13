@@ -12,7 +12,7 @@
             IPlanetStatisticsAnalyzer planetStatisticsAnalyzer = new PlanetStatisticsAnalyzer(userInteraction, planetStatisticsUI);
             IPlanetsReader planetsReader = new PlanetsFromApiReader(apiDataReader, secondaryApiDataReader, userInteraction, typeConverter);
 
-            StarWarsPlanetsStatsApp App =  new(userInteraction, planetStatisticsAnalyzer, planetsReader);
+            StarWarsPlanetsStatsApp App =  new(userInteraction, planetStatisticsAnalyzer, planetsReader, planetStatisticsUI);
         
             await App.Run();
 
