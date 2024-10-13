@@ -1,4 +1,4 @@
-# 🌌 **Star Wars Planets Info** 🌌
+# 🌌 **Star Wars Planets Stats** 🌌
 
 A console app that retrieves and displays information about planets from the Star Wars universe using the SWAPI (Star Wars API).
 
