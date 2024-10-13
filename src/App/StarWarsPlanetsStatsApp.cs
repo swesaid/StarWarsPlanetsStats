@@ -23,18 +23,3 @@ public class StarWarsPlanetsStatsApp
         _planetStatisticsAnalyzer.Analyze(planets);
     }
 }
-
-
-public class ConsoleUserInteraction : IUserInteraction
-{
-    public string? ReadFromUser()
-    {
-        return Console.ReadLine();
-    }
-
-    public void PrintMessage(string message)
-    {
-        Console.WriteLine(message);
-    }
-}
-
