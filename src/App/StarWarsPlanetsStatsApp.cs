@@ -19,9 +19,6 @@ public class StarWarsPlanetsStatsApp
 
         _userInteraction.PrintPlanetsInfoTable(planets);
         _planetStatisticsAnalyzer.Analyze(planets);
-
-        _userInteraction.PrintMessage("\nPress any key to close.");
-        Console.ReadKey();
     }
 }
 
@@ -41,7 +38,7 @@ public class ConsoleUserInteraction : IUserInteraction
     public void PrintPlanetsInfoTable(List<Planet> planets)
     {
         string header = $"{"Name",-25} | {"Diameter",-15} | {"SurfaceWater",-20} | {"Population",-15} |";
-        string separator = new string('-', header.Length);
+        string separator = new ('-', header.Length);
         
         PrintMessage(header);
         PrintMessage(separator);

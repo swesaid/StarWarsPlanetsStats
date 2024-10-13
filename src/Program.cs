@@ -22,6 +22,9 @@
             Console.WriteLine("Sorry! The application has experienced an unexpected error and will have to be closed." +
                               "Exception message: " + ex.Message);
         }
+
+        Console.WriteLine("\nPress any key to close.");
+        Console.ReadKey();
     }
     
 }
