@@ -2,6 +2,6 @@
 
 public interface ITypeConverter
 {
-    List<Planet> Convert(Root? root);
+    IReadOnlyList<Planet> Convert(Root? root);
 }
 

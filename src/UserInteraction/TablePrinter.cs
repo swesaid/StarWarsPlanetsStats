@@ -2,7 +2,7 @@
 
 public static class TablePrinter
 {
-    public static void Print<T>(List<T> items)
+    public static void Print<T>(IReadOnlyList<T> items)
     {
         const int columnWidth = 15;
 

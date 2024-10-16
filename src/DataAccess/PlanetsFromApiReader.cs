@@ -15,7 +15,7 @@ public class PlanetsFromApiReader : IPlanetsReader
         _typeConverter = typeConverter;
     }
 
-    public async Task<List<Planet>> Read()
+    public async Task<IReadOnlyList<Planet>> Read()
     {
         string? jsonString = null;
         string baseAddress = "https://swapi.dev/api/";

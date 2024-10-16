@@ -2,6 +2,6 @@
 
 public interface IPlanetsReader
 {
-    Task<List<Planet>> Read();
+    Task<IReadOnlyList<Planet>> Read();
 
 }

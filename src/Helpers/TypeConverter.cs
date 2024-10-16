@@ -2,7 +2,7 @@
 
 public class TypeConverter : ITypeConverter
 {
-    public List<Planet> Convert(Root? root)
+    public IReadOnlyList<Planet> Convert(Root? root)
     {
         ArgumentNullException.ThrowIfNull(root);
 

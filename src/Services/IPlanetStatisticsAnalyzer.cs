@@ -2,5 +2,5 @@
 
 public interface IPlanetStatisticsAnalyzer
 {
-    void Analyze(List<Planet> planets);
+    void Analyze(IReadOnlyList<Planet> planets);
 }

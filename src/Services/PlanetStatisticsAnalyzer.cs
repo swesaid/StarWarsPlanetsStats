@@ -19,7 +19,7 @@ public class PlanetStatisticsAnalyzer : IPlanetStatisticsAnalyzer
         _planetStatisticsUI = planetStatisticsUI;
     }
 
-    public void Analyze(List<Planet> planets)
+    public void Analyze(IReadOnlyList<Planet> planets)
     {
         string? chosenProperty = _planetStatisticsUI.ChooseStatistics(statisticsSelectors.Keys);
 
